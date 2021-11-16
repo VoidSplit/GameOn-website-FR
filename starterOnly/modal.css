@@ -206,7 +206,7 @@ input {
   width: 100%;
   border-radius: 8px;
   font-size: 20px;
-  height: 48px;
+  min-height: 48px;
 }
 .formData[data-error]::after {
   content: attr(data-error);
@@ -225,8 +225,23 @@ input {
 }
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
+  content: attr(data-error);
+  margin-bottom: 5px;
 }
-/* 
+.formData[data-error-visible="true"] .text-control[data-error=""] {
+  display: none;
+  text-align: center;
+}
+.formData[data-error-visible="true"] .text-control:after {
+  content: attr(data-error);
+  font-size: 1em;
+  color: #e54858;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+/*
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;

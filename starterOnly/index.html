@@ -52,7 +52,20 @@
         </button>
       </div>
 
-      <div class="bground">
+      <div class="notifications-wrapper">
+        <div id="notif-conf" class="confirmation-notification">
+          <div class="notification-content">
+            <p class="notification-text">
+              Votre réservation a bien été prise en compte.
+            </p>
+          </div>
+          <button onclick="closeNotif()" class="btn-close-notification">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="bground" id="bground">
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
@@ -60,8 +73,7 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validateForm();"
-              
+              id="modalForm"
             >
               <div
                 class="formData">
@@ -205,6 +217,7 @@
                 <div id="error-container" class="text-control" data-error=""></div>
               </div>
               <input
+                id="submit-btn"
                 class="btn-submit"
                 type="submit"
                 class="button"

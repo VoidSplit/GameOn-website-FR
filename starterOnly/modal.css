@@ -493,6 +493,42 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+/* notifications */
+.notifications-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  padding: 10px;
+}
+.confirmation-notification {
+  display: none;
+  background-color: #4a9022;
+  color: #fff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  font-weight: normal;
+  position: relative;
+}
+.notification-text {
+  margin: 10px 50px 10px 10px;
+  font-size: 1rem;
+  font-weight: normal;
+}
+button.btn-close-notification {
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  height: 100%;
+  width: 50px;
+  right: 0;
+  color: #fff;
+}
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;

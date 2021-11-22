@@ -69,21 +69,27 @@ img {
 }
 
 @media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 768px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 47px;
+    height: 47px;
   }
-}
 
-@media screen and (max-width: 768px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
     top: 0;
   }
-  .topnav.responsive a {
+  .topnav.responsive a:not(.icon) {
     float: none;
     display: block;
     text-align: left;
@@ -97,7 +103,6 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 } 
 
@@ -193,7 +198,6 @@ label {
   font-size: 17px;
   font-weight: normal;
   display: inline-block;
-  margin-bottom: 11px;
 }
 input {
   padding: 8px;
@@ -205,8 +209,14 @@ input {
   padding: 8px;
   width: 100%;
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 1rem;
   min-height: 48px;
+}
+.formData {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin-top: 11px;
 }
 .formData[data-error]::after {
   content: attr(data-error);
@@ -247,6 +257,13 @@ input[data-error]::after {
     font-size: 0.4em;
     color: red;
 } */
+.text-label {
+  margin-top: 11px;
+}
+#villes {
+  display: block;
+  margin-top: 0;
+}
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -347,6 +364,9 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+.btn-submit {
+  margin-top: 20px;
 }
 /* custom select styles */
 .custom-select {
@@ -477,6 +497,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
@@ -495,6 +516,9 @@ footer {
 }
 
 /* notifications */
+#notif-conf {
+  display: none;
+}
 .notifications-wrapper {
   position: fixed;
   top: 0;
@@ -503,9 +527,12 @@ footer {
   display: flex;
   justify-content: end;
   padding: 10px;
+  z-index: 5;
+  background-color: transparent;
 }
 .confirmation-notification {
-  display: none;
+  display: flex;
+  flex-direction: row;
   background-color: #4a9022;
   color: #fff;
   border-radius: 5px;
@@ -556,6 +583,7 @@ button.btn-close-notification {
   .hero-img img {
     border-radius: 10px;
     margin-top: 40px;
+    
   }
   .hero-section > .btn-signup {
     display: block;

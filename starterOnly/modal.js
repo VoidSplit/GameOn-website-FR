@@ -13,15 +13,17 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelectorAll(".close");
-let username = document.getElementById("first");
+
+let firstname = document.getElementById("first");
+let lastname = document.getElementById("last");
+let email = document.getElementById("email");
+let birthdate = document.getElementById("birthdate");
 let options = document.getElementsByName("location");
 let tos = document.getElementById("checkbox1");
-let birthdate = document.getElementById("birthdate");
-let errorWrapper = document.getElementById("error-container");
+
+let modalBody = document.getElementById("modal-body");
 let submit = document.querySelectorAll(".submit-btn");
-let modalForm = document.getElementById('modalForm')
-// notifications elements
-let confirmationNotification = document.getElementById("notif-conf");
+let modalForm = document.getElementById('modalForm');
 
 // launch & close modal events
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -50,37 +52,50 @@ function getOptions() {
   }
 }
 
-
-
 function validateForm() {
-  if (username.value.length < 2) {
-    errorWrapper.style.display = "block";
-    errorWrapper.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
-    return false;
-  } else if (!getOptions()) {
-    errorWrapper.style.display = "block";
-    errorWrapper.innerHTML = "Vous devez choisir une option.";
-    return false;
-  } else if (tos.checked == false) {
-    errorWrapper.style.display = "block";
-    errorWrapper.innerHTML = "Vous devez vérifier que vous acceptez les termes et conditions.";
-    return false;
-  } else if (birthdate.value == "") {
-    errorWrapper.style.display = "block";
-    errorWrapper.innerHTML = "Vous devez entrer votre date de naissance.";
-    return false;
+  let formValid = true;
+  if(firstname.value.length < 2) {
+    firstname.parentNode.setAttribute('data-error-visible', true)
+    formValid = false
   } else {
-    openNotif();
-    closeModal();
-    return true;
+    firstname.parentNode.setAttribute('data-error-visible', false)
+  }
+  if(lastname.value.length < 2) {
+    lastname.parentNode.setAttribute('data-error-visible', true)
+    formValid = false
+  }  else {
+    lastname.parentNode.setAttribute('data-error-visible', false)
+  }
+  if(!email.value.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
+    email.parentNode.setAttribute('data-error-visible', true)
+    formValid = false
+  } else {
+    email.parentNode.setAttribute('data-error-visible', false)
+  }
+  if(birthdate.value == "" || birthdate.value == null || birthdate.value == undefined) {
+    birthdate.parentNode.setAttribute('data-error-visible', true)
+    formValid = false
+  } else {
+    birthdate.parentNode.setAttribute('data-error-visible', false)
+  }
+  if(!getOptions()) {
+    options[0].parentNode.setAttribute('data-error-visible', true)
+    formValid = false
+  } else {
+    options[0].parentNode.setAttribute('data-error-visible', false)
+  }
+  if(!tos.checked) {
+    tos.parentNode.setAttribute('data-error-visible', true)
+    formValid = false
+  } else {
+    tos.parentNode.setAttribute('data-error-visible', false)
+  }
+  if(formValid == true) {
+    openValidation()
   }
 }
-// close & open notifications
-function closeNotif() {
-  confirmationNotification.style.display = "none";
-}
-function openNotif() {
-  confirmationNotification.style.display = "flex";
+function openValidation() {
+  modalBody.classList.toggle('validated-body')
 }
 function closeModal() {
   let modal = document.getElementById('bground');

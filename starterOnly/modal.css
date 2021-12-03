@@ -9,7 +9,6 @@
   padding: 0;
 }
 /* Landing Page */
-
 body {
   margin: 0;
   display: flex;
@@ -20,16 +19,13 @@ body {
   max-width: 1300px;
   margin: 0 auto;
 }
-
 p {
   margin-bottom: 0;
   padding: 0.5vw;
 }
-
 img {
   padding-right: 1rem;
 }
-
 .topnav {
   overflow: hidden;
   margin: 3.5%;
@@ -51,62 +47,21 @@ img {
   font-size: 20px;
   font-family: Roboto, sans-serif;
 }
-
 .topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
 }
-
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
 }
-
 .topnav .icon {
   display: none;
 }
-
-@media screen and (max-width: 768px) {
-}
-
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 47px;
-    height: 47px;
-  }
-
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a:not(.icon) {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-} 
-
 main {
+  position: relative;
   font-size: 130%;
   font-weight: bolder;
   color: black;
@@ -116,10 +71,7 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
-
 .modal-btn {
   font-size: 145%;
   background: #fe142f;
@@ -131,19 +83,15 @@ main {
   border-radius: 1rem;
   cursor: pointer;
 }
-
 .modal-btn:hover {
   background: #3876ac;
 }
-
 .footer {
   margin: 20px;
   padding: 10px;
   font-family: var(--font-slab);
 }
-
 /* Modal form */
-
 .button {
   background: #fe142f;
   margin-top: 0.5em;
@@ -153,15 +101,12 @@ main {
   cursor: pointer;
   font-size: 16px;
 }
-
 .button:hover {
   background: #3876ac;
 }
-
 .smFont {
   font-size: 16px;
 }
-
 .bground {
   display: none;
   position: fixed;
@@ -173,7 +118,6 @@ main {
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
-
 .content {
   margin: 5% auto;
   width: 100%;
@@ -187,12 +131,42 @@ main {
   color: #fff;
   padding-top: 10px;
 }
-
 .modal-body {
+  position: relative;
   padding: 15px 8%;
   margin: 15px auto;
 }
-
+.modal-body:not(.validated-body) .validated {
+  display: none;
+}
+.modal-body.validated-body .validated {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #232323;
+  height: 100%;
+  width: 100%;
+}
+.modal-body.validated-body .validated .notification {
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 51.34px;
+  width: 400px;
+  text-align: center;
+}
+.modal-body.validated-body .validated .close-button {
+  position: absolute;
+  background: #FE142F;
+  color: #fff;
+  border: none;
+  bottom: 20px;
+  padding: 10px 80px;
+  border-radius: 8px;
+}
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -211,58 +185,47 @@ input {
   border-radius: 8px;
   font-size: 1rem;
   min-height: 48px;
+  position: relative;
+}
+.formData[data-error-visible=true] input {
+  border: 2px solid #FF4E60;
+}
+.formData[data-error-visible=true] div[data-error] {
+  height: 0;
+  position: relative;
+}
+.formData[data-error-visible=true] div[data-error]:after {
+  content: attr(data-error);
+  position: relative;
+  color: #FF4E60;
+  font-size: 13px;
+  top: -20px;
 }
 .formData {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 11px;
   margin-top: 11px;
 }
-.formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: #e54858;
-  display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
-}
-.formData[data-error-visible="true"]::after {
-  opacity: 1;
-}
-.formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
-  content: attr(data-error);
-  margin-bottom: 5px;
-}
-.formData[data-error-visible="true"] .text-control[data-error=""] {
-  display: none;
-  text-align: center;
-}
-.formData[data-error-visible="true"] .text-control:after {
-  content: attr(data-error);
-  font-size: 1em;
-  color: #e54858;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-/*
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 .text-label {
   margin-top: 11px;
 }
 #villes {
   display: block;
   margin-top: 0;
+}
+#villes[data-error-visible=true] {
+  margin-bottom: 35px;
+}
+#villes[data-error-visible=true] div[data-error]:after {
+  top: -5px;
+}
+#tos[data-error-visible=true] .checkbox2-label {
+  margin-bottom: 10px;
+}
+#tos[data-error-visible=true] div[data-error]:after {
+  top: -25px;
 }
 .checkbox-label,
 .checkbox2-label {
@@ -337,6 +300,7 @@ input[data-error]::after {
   opacity: 1;
   cursor: pointer;
   transform: scale(0.7);
+  z-index: 5;
 }
 .close:before,
 .close:after {
@@ -375,14 +339,12 @@ input[data-error]::after {
   font-size: 1.1rem;
   font-weight: normal;
 }
-
 .custom-select select {
   display: none;
 }
 .select-selected {
   background-color: #fff;
 }
-
 /* Style the arrow inside the select element: */
 .select-selected:after {
   position: absolute;
@@ -397,13 +359,11 @@ input[data-error]::after {
   transform: rotate(-48deg);
   border-radius: 5px 0 5px 0;
 }
-
 /* Point the arrow upwards when the select box is open (active): */
 .select-selected.select-arrow-active:after {
   transform: rotate(135deg);
   top: 13px;
 }
-
 .select-items div,
 .select-selected {
   color: #000;
@@ -414,7 +374,6 @@ input[data-error]::after {
   border-radius: 8px;
   height: 48px;
 }
-
 /* Style items (options): */
 .select-items {
   position: absolute;
@@ -424,12 +383,10 @@ input[data-error]::after {
   right: 0;
   z-index: 99;
 }
-
 /* Hide the items when the select box is closed: */
 .select-hide {
   display: none;
 }
-
 .select-items div:hover,
 .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
@@ -514,48 +471,52 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-
-/* notifications */
-#notif-conf {
-  display: none;
+@media screen and (max-width: 768px) {
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 47px;
+    height: 47px;
+  }
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a:not(.icon) {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  main {
+    margin: 0;
+  }
+  .bground {
+    position: absolute;
+    background-color: transparent;
+    background-color: #fff;
+  }
+  .content {
+    max-width: 100%;
+    margin: 0;
+    height: 100vh;
+  }
+  .modal-body.validated-body .validated {
+    height: 100%;
+  }
 }
-.notifications-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: end;
-  padding: 10px;
-  z-index: 5;
-  background-color: transparent;
+@media screen and (max-width: 540px) {
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
 }
-.confirmation-notification {
-  display: flex;
-  flex-direction: row;
-  background-color: #4a9022;
-  color: #fff;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-  font-weight: normal;
-  position: relative;
-}
-.notification-text {
-  margin: 10px 50px 10px 10px;
-  font-size: 1rem;
-  font-weight: normal;
-}
-button.btn-close-notification {
-  position: absolute;
-  border: none;
-  background-color: transparent;
-  height: 100%;
-  width: 50px;
-  right: 0;
-  color: #fff;
-}
-
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -583,7 +544,6 @@ button.btn-close-notification {
   .hero-img img {
     border-radius: 10px;
     margin-top: 40px;
-    
   }
   .hero-section > .btn-signup {
     display: block;
@@ -595,7 +555,6 @@ button.btn-close-notification {
     text-align: center;
   }
 }
-
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -605,4 +564,3 @@ button.btn-close-notification {
     opacity: 1;
   }
 }
-

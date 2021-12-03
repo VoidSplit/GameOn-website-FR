@@ -6,10 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="modal.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
   </head>
   <body>
     <div class="topnav" id="myTopnav">
@@ -45,47 +42,38 @@
         </div>
         <button class="btn-signup modal-btn">je m'inscris</button>
       </div>
-      <div class="notifications-wrapper">
-        <div id="notif-conf" class="confirmation-notification">
-          <div class="notification-content">
-            <p class="notification-text">
-              Votre réservation a bien été prise en compte.
-            </p>
-          </div>
-          <button onclick="closeNotif()" class="btn-close-notification">
-            <i class="fa fa-times"></i>
-          </button>
-        </div>
-      </div>
-
       <div class="bground" id="bground">
         <div class="content">
           <span class="close"></span>
-          <div class="modal-body">
+          <div id="modal-body" class="modal-body">
             <form name="reserve" action="index.html" method="get" id="modalForm">
-              <div class="formData">
+              <div class="formData" data-error-visible="false">
                 <label for="first">Prénom</label>
-                <input class="text-control" type="text" id="first" name="first" minlength="2"/>
+                <input class="text-control" type="text" id="first" name="first" minlength="2" />
+                <div data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom."></div>
               </div>
-              <div
-                class="formData">
+              <div class="formData" data-error-visible="false">
                 <label for="last">Nom</label>
                 <input class="text-control" type="text" id="last" name="last" minlength="2"/>
+                <div data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom."></div>
               </div>
-              <div class="formData">
+              <div class="formData" data-error-visible="false">
                 <label for="email">E-mail</label>
                 <input class="text-control" type="email" id="email" name="email"/>
+                <div data-error="Vous devez entrer une adresse mail valide."></div>
               </div>
-              <div class="formData">
+              <div class="formData" data-error-visible="false">
                 <label for="birthdate">Date de naissance</label>
                 <input class="text-control" type="date" id="birthdate" name="birthdate"/>
+                <div data-error="Vous devez entrer votre date de naissance."></div>
               </div>
-              <div class="formData">
+              <div class="formData" data-error-visible="false">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" step="1" >
+                <div data-error="Vous devez entrer une valeur numérique."></div>
               </div>
               <p class="text-label">Quelles villes ?</p>
-              <div class="formData" id="villes">
+              <div class="formData" id="villes" data-error-visible="false">
                 <input class="checkbox-input" type="radio" id="location1" name="location" value="New York"/>
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -116,31 +104,35 @@
                   <span class="checkbox-icon"></span>
                   Portland
                 </label>
+                <div data-error="Vous devez choisir une option."></div>
               </div>
-
-              <div class="formData" data-error-visible="true">
+              <div class="formData" id="tos" data-error-visible="false">
                 <input class="checkbox-input" type="checkbox" id="checkbox1" checked/>
                 <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
+                <div data-error="Vous devez vérifier que vous acceptez les termes et conditions."></div>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
-                <div id="error-container" class="text-control" data-error=""></div>
               </div>
               <input id="submit-btn" class="btn-submit button" type="submit" value="C'est parti"/>
             </form>
+            <div class="validated">
+              <div class="notification">
+                Thanks you for submitting your registration details
+              </div>
+              <button class="close-button" onclick="closeModal()">Close</button>
+            </div>
           </div>
         </div>
       </div>
     </main>
     <footer>
-      <p class="copyrights">
-        Copyright 2014 - 2020, GameOn Inc.
-      </p>
+      <p class="copyrights">Copyright 2014 - 2020, GameOn Inc.</p>
     </footer>
     <script src="modal.js"></script>
   </body>

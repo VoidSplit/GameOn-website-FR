@@ -6,52 +6,42 @@ function editNav() {
     x.className = "topnav";
   }
 }
-
 // DOM Elements
 // modal elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelectorAll(".close");
-
 let firstname = document.getElementById("first");
 let lastname = document.getElementById("last");
 let email = document.getElementById("email");
 let birthdate = document.getElementById("birthdate");
 let options = document.getElementsByName("location");
 let tos = document.getElementById("checkbox1");
-
 let modalBody = document.getElementById("modal-body");
 let submit = document.querySelectorAll(".submit-btn");
 let modalForm = document.getElementById('modalForm');
-
+let homePage = document.getElementsByClassName('hero-section');
 // launch & close modal events
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 modalClose.forEach((cross) => cross.addEventListener("click", closeModal));
-
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  homePage[0].classList.add('modalopened');
 }
-// close modal form
-function closeModal() {
-  modalbg.style.display = "none";
-}
-
 // event listener for submit button
 modalForm.addEventListener("submit", function(event) {
   event.preventDefault()
   
   validateForm()
 });
-
 // get selected option
 function getOptions() {
   for (let i = 0; i < options.length; i++) {
     if (options[i].checked) return true;
   }
 }
-
 function validateForm() {
   let formValid = true;
   if(firstname.value.length < 2) {
@@ -100,4 +90,5 @@ function openValidation() {
 function closeModal() {
   let modal = document.getElementById('bground');
   modal.style.display = "none";
+  homePage[0].classList.remove('modalopened');
 }

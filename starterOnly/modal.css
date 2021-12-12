@@ -472,6 +472,9 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 768px) {
+  .hero-section.modalopened {
+    display: none;
+  }
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
@@ -497,14 +500,15 @@ footer {
     margin: 0;
   }
   .bground {
-    position: absolute;
+    position: relative;
     background-color: transparent;
     background-color: #fff;
+    width: 100vw;
+    left: -7px;
   }
   .content {
     max-width: 100%;
     margin: 0;
-    height: 100vh;
   }
   .modal-body.validated-body .validated {
     height: 100%;
